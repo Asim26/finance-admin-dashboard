@@ -37,7 +37,7 @@ function Dashboard() {
           marginLeft: '1.5%',
         }}
       >
-        Button
+        Get Api Response
       </Button>
     </div>
   )
