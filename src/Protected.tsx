@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-// import { loginAccess } from './cache'
 import { useHistory } from 'react-router-dom'
 
 const Protected = (props: any) => {
