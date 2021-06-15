@@ -7,7 +7,6 @@ import { useStoreActions } from 'easy-peasy'
 
 function Dashboard() {
   const products = useStoreState((state: any) => state.products.items)
-  console.log(products)
   const apiResponse: any = useStoreActions(
     (actions: any) => actions.user.apiUsers
   )
