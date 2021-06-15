@@ -39,6 +39,9 @@ function Dashboard() {
         onClick={() => {
           apiResponse(data)
         }}
+        style={{
+          marginLeft: '1.5%',
+        }}
       >
         Button
       </Button>
