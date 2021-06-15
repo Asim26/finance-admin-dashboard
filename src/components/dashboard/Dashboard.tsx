@@ -27,11 +27,6 @@ function Dashboard() {
 
   return (
     <div>
-      {/* {productLength}
-            {products.map((list:any) => (
-
-               <div>{list.name}</div>             
-            ))} */}
       <TopNavigation />
       <DataTableContainer />
       <Button
