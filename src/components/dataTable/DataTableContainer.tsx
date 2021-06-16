@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DataTable, { createTheme } from 'react-data-table-component'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
@@ -109,9 +109,28 @@ function DataTableContainer() {
   const [size, setSize] = React.useState('md')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  // state Variables
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [type, setType] = useState()
+  const [minBasePrice, setMinBasePrice] = useState(0)
+  const [maxBasePrice, setMaxBasePrice] = useState(0)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const alertStyle = { color: 'red' }
+
   const handleClick = (newSize: any) => {
     setSize(newSize)
     onOpen()
+  }
+
+  const handleClose = (newSize: any) => {
+    setSize(newSize)
+    onClose()
+  }
+
+  const addTipping = () => {
+    setIsSubmitted(true)
   }
 
   return (
@@ -187,56 +206,107 @@ function DataTableContainer() {
             <DrawerHeader> Add Tipping</DrawerHeader>
             <DrawerBody>
               <Stack spacing='24px'>
-                <Box>
-                  <FormLabel htmlFor='name'>Name</FormLabel>
-                  <Input id='name' placeholder='Please enter name' />
-                </Box>
-                <Box>
-                  <FormLabel htmlFor='description'>Description</FormLabel>
-                  <Input
-                    id='description'
-                    placeholder='Please enter description'
-                  />
-                </Box>
-                <Box>
-                  <FormLabel htmlFor='type'>Type</FormLabel>
-                  <Select placeholder='Select type'>
-                    <option value='option1'>Option 1</option>
-                    <option value='option2'>Option 2</option>
-                    <option value='option3'>Option 3</option>
-                  </Select>
-                </Box>
-                <Box>
-                  <FormLabel htmlFor='minBasePrice'>Min Base Price</FormLabel>
-                  <NumberInput>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Box>
-                <Box>
-                  <FormLabel htmlFor='maxBasePrice'>Max Base Price</FormLabel>
-                  <NumberInput>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Box>
-                <Box>
-                  <Button
-                    colorScheme='blue'
-                    style={{ float: 'right', marginLeft: '1%' }}
-                  >
-                    Cancel
-                  </Button>
-                  <Button colorScheme='green' style={{ float: 'right' }}>
-                    Add Tipping
-                  </Button>
-                </Box>
+                <form onSubmit={addTipping}>
+                  <Box>
+                    <FormLabel htmlFor='name'>Name</FormLabel>
+                    <Input
+                      id='name'
+                      placeholder='Please enter name'
+                      onChange={(e: any) => {
+                        setName(e.target.value)
+                      }}
+                    />
+                    {!name && isSubmitted ? (
+                      <p style={alertStyle}>Name is required </p>
+                    ) : (
+                      ''
+                    )}
+                  </Box>
+                  <Box>
+                    <FormLabel htmlFor='description'>Description</FormLabel>
+                    <Input
+                      id='description'
+                      placeholder='Please enter description'
+                      onChange={(e: any) => {
+                        setDescription(e.target.value)
+                      }}
+                    />
+                    {!description && isSubmitted ? (
+                      <p style={alertStyle}>Description is required </p>
+                    ) : (
+                      ''
+                    )}
+                  </Box>
+                  <Box>
+                    <FormLabel htmlFor='type'>Type</FormLabel>
+                    <Select
+                      placeholder='Select type'
+                      onChange={(e: any) => {
+                        setType(e.target.value)
+                      }}
+                    >
+                      <option value='option1'>Option 1</option>
+                      <option value='option2'>Option 2</option>
+                      <option value='option3'>Option 3</option>
+                    </Select>
+                    {!type && isSubmitted ? (
+                      <p style={alertStyle}>Type is required </p>
+                    ) : (
+                      ''
+                    )}
+                  </Box>
+                  <Box>
+                    <FormLabel htmlFor='minBasePrice'>Min Base Price</FormLabel>
+                    <Input
+                      id='minBaseRange'
+                      onChange={(e: any) => {
+                        setMinBasePrice(e.target.value)
+                      }}
+                    />
+                    {!minBasePrice && isSubmitted ? (
+                      <p style={alertStyle}>Min base value is required </p>
+                    ) : (
+                      ''
+                    )}
+                  </Box>
+                  <Box>
+                    <FormLabel htmlFor='maxBasePrice'>Max Base Price</FormLabel>
+                    <Input
+                      id='manBaseRange'
+                      onChange={(e: any) => {
+                        setMaxBasePrice(e.target.value)
+                      }}
+                    />
+                    {!maxBasePrice && isSubmitted ? (
+                      <p style={alertStyle}>Max base value is required </p>
+                    ) : (
+                      ''
+                    )}
+                  </Box>
+                  <Box>
+                    <Button
+                      colorScheme='blue'
+                      style={{
+                        float: 'right',
+                        marginLeft: '1%',
+                        marginTop: '3%',
+                      }}
+                      onClick={onClose}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      colorScheme='green'
+                      style={{
+                        float: 'right',
+                        marginTop: '3%',
+                      }}
+                      onClick={addTipping}
+                    >
+                      Add Tipping
+                    </Button>
+                  </Box>
+                </form>
               </Stack>
             </DrawerBody>
           </DrawerContent>
