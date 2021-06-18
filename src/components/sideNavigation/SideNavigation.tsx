@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Drawer,
   DrawerBody,
@@ -7,21 +7,21 @@ import {
   DrawerContent,
   useDisclosure,
   Button,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 
-function SideNavigation(props:any) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [placement, setPlacement] = React.useState<any>("left");
+function SideNavigation(props: any) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [placement] = React.useState<any>('left')
   return (
     <div>
       <>
-        <Button colorScheme="blue" onClick={onOpen}>
+        <Button colorScheme='blue' onClick={onOpen}>
           =
         </Button>
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
-          <DrawerContent style={{ backgroundColor: "green", color: "white" }}>
-            <DrawerHeader borderBottomWidth="1px">
+          <DrawerContent style={{ backgroundColor: 'green', color: 'white' }}>
+            <DrawerHeader borderBottomWidth='1px'>
               <br />
               Finance Admin
             </DrawerHeader>
@@ -45,7 +45,7 @@ function SideNavigation(props:any) {
         </Drawer>
       </>
     </div>
-  );
+  )
 }
 
-export default SideNavigation;
+export default SideNavigation

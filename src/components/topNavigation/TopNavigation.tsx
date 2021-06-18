@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 import {
   Box,
   Flex,
@@ -15,11 +15,11 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-} from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import SideNavigation from '../sideNavigation/SideNavigation';
+} from '@chakra-ui/react'
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import SideNavigation from '../sideNavigation/SideNavigation'
 
-const Links = [''];
+const Links = ['']
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -30,31 +30,30 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
+    href={'#'}
+  >
     {children}
   </Link>
-);
+)
 
-export default function TopNavigation(props:any) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function TopNavigation(props: any) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} style={{backgroundColor:"lightblue"}}>
+      <Box
+        bg={useColorModeValue('gray.100', 'gray.900')}
+        px={4}
+        style={{ backgroundColor: 'lightblue' }}
+      >
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <IconButton
-            size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={'Open Menu'}
-            display={{ md: 'none' }}
-            onClick={isOpen ? onClose : onOpen}
-          />
           <HStack spacing={8} alignItems={'center'}>
-              <SideNavigation />
+            <SideNavigation />
             <HStack
               as={'nav'}
               spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
+              display={{ base: 'none', md: 'flex' }}
+            >
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
@@ -66,7 +65,8 @@ export default function TopNavigation(props:any) {
                 as={Button}
                 rounded={'full'}
                 variant={'link'}
-                cursor={'pointer'}>
+                cursor={'pointer'}
+              >
                 <Avatar
                   size={'sm'}
                   src={
@@ -88,7 +88,6 @@ export default function TopNavigation(props:any) {
           </Box>
         ) : null}
       </Box>
-
     </>
-  );
+  )
 }

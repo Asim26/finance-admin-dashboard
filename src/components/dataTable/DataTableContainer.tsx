@@ -15,13 +15,7 @@ import {
   Input,
 } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
-import {
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-} from '@chakra-ui/react'
+import ReactJson from 'react-json-view'
 
 createTheme('solarized', {
   text: {
@@ -105,6 +99,24 @@ const columns = [
   },
 ]
 
+const my_json_object = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    phone: '1-770-736-8031 x56442',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    phone: '1-770-736-8031 x56442',
+    website: 'hildegard.org',
+  },
+]
 function DataTableContainer() {
   const [size, setSize] = React.useState('md')
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -124,14 +136,11 @@ function DataTableContainer() {
     onOpen()
   }
 
-  const handleClose = (newSize: any) => {
-    setSize(newSize)
-    onClose()
-  }
-
   const addTipping = () => {
     setIsSubmitted(true)
   }
+
+  const onEdit = (e: any) => {}
 
   return (
     <div>
@@ -144,35 +153,34 @@ function DataTableContainer() {
             <Tab>Payment Gateway</Tab>
           </TabList>
 
-          <div>
-            <Button
-              colorScheme='blue'
-              style={{
-                float: 'right',
-                marginRight: '1%',
-                marginLeft: '1%',
-                marginBottom: '1%',
-              }}
-              onClick={() => handleClick('sm')}
-              // m={4}
-            >
-              Tipping
-            </Button>
-            <Button
-              colorScheme='blue'
-              style={{
-                float: 'right',
-                marginLeft: '1%',
-                marginBottom: '1%',
-              }}
-            >
-              Add Tier
-            </Button>
-          </div>
-
           <TabPanels>
             <TabPanel>
               <div>
+                <div>
+                  <Button
+                    colorScheme='blue'
+                    style={{
+                      float: 'right',
+                      marginRight: '1%',
+                      marginLeft: '1%',
+                      marginBottom: '1%',
+                    }}
+                    onClick={() => handleClick('sm')}
+                  >
+                    Tipping
+                  </Button>
+                  <Button
+                    colorScheme='blue'
+                    style={{
+                      float: 'right',
+                      marginLeft: '1%',
+                      marginBottom: '1%',
+                    }}
+                  >
+                    Add Tier
+                  </Button>
+                </div>
+
                 <DataTable
                   title='Finance Admin'
                   columns={columns}
@@ -191,14 +199,55 @@ function DataTableContainer() {
                 <p></p>
               </div>
             </TabPanel>
+
             <TabPanel>
               <div>
-                <p></p>
+                <h1>1 Link</h1>
+                <div>
+                  <Tabs>
+                    <TabList>
+                      <Tab>Configurations</Tab>
+                      <Tab>Bank</Tab>
+                      <Tab>Payment Purposes</Tab>
+                      <Tab>Response Codes</Tab>
+                    </TabList>
+
+                    <TabPanels>
+                      <TabPanel>
+                        <div>
+                          <ReactJson
+                            src={my_json_object}
+                            theme='monokai'
+                            onEdit={onEdit}
+                          />
+                        </div>
+                        <div>
+                          <Button
+                            colorScheme='blue'
+                            style={{ marginTop: '0.5%' }}
+                          >
+                            Update
+                          </Button>
+                        </div>
+                      </TabPanel>
+                      <TabPanel>
+                        <p></p>
+                      </TabPanel>
+                      <TabPanel>
+                        <p></p>
+                      </TabPanel>
+                      <TabPanel>
+                        <p></p>
+                      </TabPanel>
+                    </TabPanels>
+                  </Tabs>
+                </div>
               </div>
             </TabPanel>
           </TabPanels>
         </Tabs>
       </div>
+
       <div>
         <Drawer onClose={onClose} isOpen={isOpen} size={size}>
           <DrawerOverlay />
