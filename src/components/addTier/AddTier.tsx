@@ -15,18 +15,7 @@ import {
 import { Select } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Grid, GridItem } from '@chakra-ui/react'
-import PopOverComponent from '../popOver/PopOverComponent'
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from '@chakra-ui/react'
-import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import Exceptions from '../popOver/Exceptions'
 
 function AddTier() {
   const [size, setSize] = React.useState('md')
@@ -75,7 +64,10 @@ function AddTier() {
             <DrawerOverlay />
             <DrawerContent>
               <DrawerHeader
-                style={{ backgroundColor: 'purple', color: 'white' }}
+                style={{
+                  backgroundColor: 'rgba(5,71,130,255)',
+                  color: 'white',
+                }}
               >
                 Add Tier
               </DrawerHeader>
@@ -299,41 +291,9 @@ function AddTier() {
                   </h1>
                   <Grid templateColumns='repeat(1, 1fr)'>
                     <GridItem>
-                      <PopOverComponent />
-
-                      <Table size='sm'>
-                        <Thead>
-                          <Tr>
-                            <Th>#</Th>
-                            <Th>Day</Th>
-                            <Th>Amount</Th>
-                            <Th>Type</Th>
-                            <Th>Actions</Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          <Tr>
-                            <Td>1</Td>
-                            <Td>1</Td>
-                            <Td>2</Td>
-                            <Td>absolute</Td>
-                            <Td>
-                              <EditIcon />
-                              <DeleteIcon />
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td>2</Td>
-                            <Td>1</Td>
-                            <Td>2</Td>
-                            <Td>absolute</Td>
-                            <Td>
-                              <EditIcon />
-                              <DeleteIcon />
-                            </Td>
-                          </Tr>
-                        </Tbody>
-                      </Table>
+                      <Exceptions />
+                      {/* <DataTable columns={columns} data={data} /> */}
+                      {/* <BasicTable /> */}
                     </GridItem>
                   </Grid>
                   {/* End of Exceptions Tab */}
