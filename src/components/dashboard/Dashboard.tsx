@@ -4,6 +4,7 @@ import TopNavigation from '../topNavigation/TopNavigation'
 import { useStoreState } from 'easy-peasy'
 import { Button } from '@chakra-ui/react'
 import { useStoreActions } from 'easy-peasy'
+import BasicTableExpanderDisabled from '../expandableRow/BasicTableExpanderDisabled'
 
 function Dashboard() {
   const products = useStoreState((state: any) => state.products.items)
@@ -39,6 +40,7 @@ function Dashboard() {
       >
         Get Api Response
       </Button>
+      <BasicTableExpanderDisabled />
     </div>
   )
 }
