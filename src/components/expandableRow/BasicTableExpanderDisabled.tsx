@@ -57,11 +57,7 @@ let tableDataItems = [
 function BasicTableExpanderDisabled() {
   let [expandedId, setExpandedId] = useState<number>()
   const data = tableDataItems.map((item: any) => {
-    let disabled: boolean = false
-    if (expandedId) {
-      disabled = true
-    }
-    return { ...item, disabled }
+    return { ...item }
   })
 
   return (
