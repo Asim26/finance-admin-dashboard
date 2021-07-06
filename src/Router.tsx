@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './components/login/Login'
 import SignUp from './components/signUp/SignUp'
+import Settings from './components/settings/Settings'
 import Dashboard from './components/dashboard/Dashboard'
 import Protected from './Protected'
 
@@ -16,6 +17,7 @@ export default function AppRouter() {
           </Route>
           <Route path='/Login' exact component={Login} />
           <Route path='/SignUp' exact component={SignUp} />
+          <Route path='/Settings' exact component={Settings} />
           {/* <Route path='/' exact component={Dashboard} /> */}
         </Switch>
       </BrowserRouter>

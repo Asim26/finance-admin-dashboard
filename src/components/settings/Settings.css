@@ -1,0 +1,25 @@
+#loader {
+  color: #008cff;
+  height: 40px;
+  left: 45%;
+  position: absolute;
+  top: 45%;
+  width: 30%;
+}
+
+.listbox1,
+.listbox2 {
+  width: 25%;
+}
+
+.listbox1 {
+  padding: 1% 1%;
+  margin-top: 20%;
+  margin-left: 24%;
+}
+
+.listbox2 {
+  padding: 1% 1%;
+  margin-top: -23%;
+  margin-left: 49%;
+}
