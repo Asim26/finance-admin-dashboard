@@ -44,7 +44,13 @@ let tableDataItems = [
     genres: '1453',
     year: '2019',
   },
-  { id: 3, title: 'abcde', director: 'abcde', genres: '1454', year: '2018' },
+  {
+    id: 3,
+    title: 'abcde',
+    director: 'abcde',
+    genres: '1454',
+    year: '2018',
+  },
   {
     id: 4,
     title: 'abcdef',

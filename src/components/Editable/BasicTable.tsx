@@ -33,19 +33,6 @@ const columns = [
 
 function BasicTable(props: any) {
   const { arrData } = props
-  // {
-  //   console.log(' props.........', arrData)
-  // }
-
-  // let dummy = [
-  //   {
-  //     id: 1,
-  //     day: 'a',
-  //     amount: 'b',
-  //     type: 'c',
-  //   },
-  // ]
-
   const [innerData, setInnerData] = useState(arrData)
   const [editingId, setEditingId] = useState('')
   const [delId, setDelId] = useState('')

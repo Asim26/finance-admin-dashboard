@@ -5,6 +5,7 @@ import { Button } from '@chakra-ui/react'
 import ReactJson from 'react-json-view'
 import AddTipping from '../addTipping/AddTipping'
 import AddTier from '../addTier/AddTier'
+import FilterTransactions from '../filterTransactions/FilterTransactions'
 
 createTheme('solarized', {
   text: {
@@ -126,6 +127,7 @@ function DataTableContainer() {
                 <div>
                   <AddTipping />
                   <AddTier />
+                  <FilterTransactions />
                 </div>
 
                 <DataTable
